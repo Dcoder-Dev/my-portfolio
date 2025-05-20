@@ -3,12 +3,11 @@ import { ReactTyped } from "react-typed";
 const TypingComponent = () => {
   return (
     <ReactTyped
-      strings={["Hello World", "Konichiwa"]}
+      strings={["Devang ! \u{1F680}", "a Developer 💻", "a Movie Buff 🍿", "a Gamer 🎮"]}
       typeSpeed={40}
       backSpeed={50}
       loop
-      showCursor
-      cursorChar="|"
+      backDelay={2000}
     />
   );
 };

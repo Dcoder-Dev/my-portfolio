@@ -1,0 +1,55 @@
+.menu-icon-container {
+    position: fixed;
+    z-index: 5;
+    left: 2%;
+    top: 2%;
+}
+.line {
+    width: 40px;
+    height: 3px;
+    background-color: black;
+    margin-top: 10px;
+    transition: all 0.2s ease-out;
+}
+.line.open {
+    background-color: white;
+}
+.first.open {
+    transform: scale(1) rotate(45deg);
+    transform-origin: top left;
+}
+.second.open {
+    background-color: transparent;
+}
+.third.open {
+    transform: scale(1) rotate(-45deg);
+    transform-origin: bottom left;
+}
+.slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: 2;
+    bottom: 100vh;
+    transition: all 0.5s;
+    /* display: grid; */
+}
+.slide.open {
+    transform: translateY(100vh);
+}
+.menu-item {
+    margin: 1%;
+    color: #fff;
+    display: flex;
+    display: grid;
+    place-items: center;
+    font-size: 50px;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.menu-item:hover {
+    background-color: #fff;
+    color: #000;
+}

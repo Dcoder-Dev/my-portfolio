@@ -1,12 +1,9 @@
 import TypingComponent from "./TypingComponent";
 
-const Intro = () => {
+const Intro = ({ id }) => {
   return (
-    <div>
-      <h1>Hi I'm Devang !</h1>
-      <h2>
-        <TypingComponent />
-      </h2>
+    <div id={id} className="snap-section">
+      <h1>Hi, I'm <TypingComponent /></h1>
     </div>
   );
 };

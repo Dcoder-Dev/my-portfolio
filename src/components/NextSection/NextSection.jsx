@@ -1,18 +1,15 @@
+// Marking as Deprecated
+
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
 import KeyboardDoubleArrowUpRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowUpRounded";
 import { useEffect, useState } from "react";
 
 const NextSection = () => {
-
-
-    const [next, setNext] = useState(null);
-
-
+  const [next, setNext] = useState(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll(".snap-section");
     const totalSections = sections.length;
-
     setNext(sections[1].id);
 
     const observer = new IntersectionObserver(
@@ -25,7 +22,7 @@ const NextSection = () => {
         });
       },
       {
-        threshold: 1,
+        threshold: 0.9,
       }
     );
 
@@ -39,11 +36,13 @@ const NextSection = () => {
   return (
     <a
       className="next-section"
-      style={{ position: "fixed", bottom: 0 }}
+      style={{ zIndex: 10, position: "fixed", bottom: 0 }}
       href={`#${next}`}
     >
       {next !== document.querySelectorAll(".snap-section")[0]?.id ? (
-        <KeyboardDoubleArrowDownRoundedIcon style={{ fontSize: 50 }} />
+        <KeyboardDoubleArrowDownRoundedIcon
+          style={{ color: "white", fontSize: 50 }}
+        />
       ) : (
         <KeyboardDoubleArrowUpRoundedIcon style={{ fontSize: 50 }} />
       )}

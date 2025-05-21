@@ -1,8 +1,11 @@
+/* General CSS Setup */
 * {
-  font-family: 'Segoe UI Emoji';
+  font-family: "Raleway";
 }
 
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: black;
 }
 
@@ -19,24 +22,21 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  /* background-color: black; */
-}
-
-/* .intro {
-  width: 100vw;
-  height: 100vh;
-} */
-body {
   overflow: hidden;
   margin: 0;
+  background-color: black;
+  color: white;
 }
+/* Scroll Snap and NextSection Start */
 .scroll-container {
   height: 100vh;
+  width: 100vw;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  /* scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-   scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none; */
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -45,7 +45,7 @@ body {
 
 .snap-section {
   height: 100vh;
-  scroll-snap-align: start;
+  /* scroll-snap-align: start; */
   display: grid;
   flex-direction: column;
   place-items: center;
@@ -53,10 +53,163 @@ body {
   white-space: nowrap;
 }
 @keyframes float {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-  100% {transform: translateY(0);}
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .next-section {
   animation: float 1.5s infinite;
+}
+/* Intro Section CSS */
+.intro {
+  position: relative;
+  /* background-color: #000; */
+}
+.type-intro {
+  color: #fff;
+  font-family: 'Raleway';
+  font-weight: 300;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translate(var(--x), var(--y)) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(var(--x), var(--y)) rotate(-360deg);
+  }
+}
+
+.orbiting-element {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: height 1s ease-in-out, width 1s ease-in-out;
+}
+.float-svg {
+  width: 100px;
+  height: 100px;
+  transition: all 0.5s ease-in-out;
+}
+.float-svg:hover {
+  width: 120px;
+  height: 120px;
+}
+
+.orbiting-element:nth-child(1) {
+  animation: orbit 10s linear infinite;
+  --x: 500px;
+  --y: 0;
+}
+.orbiting-element:nth-child(2) {
+  animation: orbit 10s linear infinite;
+  --x: 0;
+  --y: -500px;
+}
+.orbiting-element:nth-child(3) {
+  animation: orbit 10s linear infinite;
+  --x: -500px;
+  --y: 0;
+}
+.orbiting-element:nth-child(4) {
+  animation: orbit 10s linear infinite;
+  --x: 0;
+  --y: 500px;
+}
+.orbiting-element:nth-child(5) {
+  animation: orbit 10s linear infinite;
+  --x: 350px;
+  --y: 350px;
+}
+.orbiting-element:nth-child(6) {
+  animation: orbit 10s linear infinite;
+  --x: -350px;
+  --y: 350px;
+}
+.orbiting-element:nth-child(7) {
+  animation: orbit 10s linear infinite;
+  --x: 350px;
+  --y: -350px;
+}
+.orbiting-element:nth-child(8) {
+  animation: orbit 10s linear infinite;
+  --x: -350px;
+  --y: -350px;
+}
+
+/* Projects Section CSS */
+#projects-sec > h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Raleway';
+  font-weight: 100;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+#projects-sec > h1::after {
+  content: '';
+  margin-bottom: -5px;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform 1s 1.5s ease-in-out;
+}
+#projects-sec > h1.animate::after {
+  transform: scaleX(1.1);
+}
+#projects-sec > h1.animate {
+  transition: opacity 0.5s ease-in-out, top 1s 0.5s ease-in-out, left 1s 0.5s ease-in-out;
+  opacity: 1;
+  top: 7vh;
+  left: 15vw;
+  /* transform: translate(-30vw, -40vh); */
+}
+.project-grid {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 10% 10px 10px 10px;
+}
+.project-card {
+   background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 85%;
+  aspect-ratio: 16/7;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-animate {
+  transition: all 1s 2.5s ease-in;
+  opacity: 0.5;
+  transform: skewY(10deg) translateX(-25vw);
 }

@@ -63,8 +63,8 @@ function App() {
 
   return (
     <>
-      <Scrollbar section={curSection} />
       <ParticlesBackground />
+      <Scrollbar section={curSection} />
       <div ref={containerRef} className="scroll-container">
         <MenuSlide />
         <Intro id="intro-sec" />

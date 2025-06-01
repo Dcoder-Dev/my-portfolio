@@ -53,6 +53,18 @@ body {
   font-size: 2rem;
   white-space: nowrap;
 }
+.snap-section > h1 {
+  text-transform: uppercase;
+  font-weight: 100;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  margin-top: 1%;
+}
+
+.snap-section > h1.show-header {
+  opacity: 1;
+  transform: translateY(-1vh);
+}
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -202,51 +214,7 @@ body {
   gap: 2%;
   position: relative;
 }
-.card {
-  width: 35%;
-  aspect-ratio: 1/1;
-  opacity: 0;
-  border-radius: 50px;
-  border: 1px solid rgb(53, 53, 53);
-  transition: all 1s ease-in-out;
-}
-.card-content {
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  border-radius: 50px;
-  background: black;
-}
-.card-content p {
-  margin: 0;
-  padding: 0 3%;
-  text-justify: distribute-all-lines;
-  text-wrap: wrap;
-  font-size: 1vw;
 
-}
-@keyframes rotateCard {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-.animate-card {
-  transition: all 1s ease-in-out;
-  opacity: 1;
-  animation: rotateCard 1s ease-in-out;
-}
-.goto-project {
-  font-size: 50px !important;
-  margin: 0 50px;
-  flex: 1;
-  align-self: end;
-  cursor: pointer;
-}
 @keyframes nextIcon {
   0% {
     transform: translateX(0);
@@ -258,38 +226,24 @@ body {
     transform: translateX(0);
   }
 }
-.goto-project:hover {
-  animation: nextIcon 1s ease-in-out infinite;
-}
 
 /* Experience Section CSS */
-
-/* .experience-section {
-  width: 100%;
+.exp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-.snap-section > h1 {
-  text-transform: uppercase;
-  font-weight: 100;
-  opacity: 0;
-  transition: all 1s ease-in-out;
-  margin-top: 1%;
+  width: 100%;
 }
-
-h1.show-header {
-  opacity: 1;
-  transform: translateY(-1vh);
-}
-
-.exp-card {
-  width: 35%;
-  aspect-ratio: 1/1;
-  background: rgba(139, 139, 139, 0.514);
-  border-radius: 50px;
+.exp-grid {
+  width: 100%;
+  /* margin-top: 12vh; */
+  white-space: nowrap;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-direction: row;
+  gap: 2%;
+  position: relative;
 }

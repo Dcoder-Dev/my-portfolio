@@ -15,9 +15,9 @@ const Projects = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          } else setIsVisible(false);
+          if (entry.isIntersecting) setIsVisible(true);
+          else setIsVisible(false);
+          if (entry.intersectionRatio < 0.1) setCurIndex(0);
         });
       },
       {
@@ -25,10 +25,10 @@ const Projects = () => {
       }
     );
 
-    const target = document.querySelector(".exp-section");
+    const target = document.querySelector(".p-section");
     observer.observe(target);
 
-    return () => observer.unobserve(target);
+    // return () => observer.unobserve(target);
   }, []);
 
   const handleNext = () => {
@@ -64,14 +64,14 @@ const Projects = () => {
   };
 
   return (
-    <div className="exp-section snap-section">
+    <div className="p-section snap-section">
       <h1 className={isVisible ? "show-header" : ""}>Projects</h1>
       <div className="project-grid">
         <ArrowBackIosIcon
           onClick={handlePrevious}
           sx={{
             fontSize: 50,
-            transition: `all 1s ${isVisible ? "" : ""} ease-in-out`,
+            transition: `all 1s ease-in-out`,
             transform: `translateY(${isVisible ? "0" : "50px"})`,
             opacity: !isVisible ? 0 : 1,
             cursor: "pointer",
@@ -82,12 +82,13 @@ const Projects = () => {
           heading={title}
           index={curIndex}
           visible={isVisible}
+          showMore={true}
         />
         <ArrowForwardIosIcon
           onClick={handleNext}
           sx={{
             fontSize: 50,
-            transition: `all 1s ${isVisible ? "" : ""} ease-in-out`,
+            transition: `all 1s ease-in-out`,
             transform: `translateY(${isVisible ? "0" : "50px"})`,
             opacity: !isVisible ? 0 : 1,
             cursor: "pointer",

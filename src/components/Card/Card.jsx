@@ -1,9 +1,12 @@
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import "./Card.css";
+import { useEffect } from "react";
 
 const Card = (props) => {
   const openProject = () => {
     window.open("https://github.com/Dcoder-Dev/my-portfolio", "_blank");
   };
+  
 
   return (
     <div className={`card ${props.visible ? "animate-card" : ""}`}>
@@ -19,7 +22,7 @@ const Card = (props) => {
           id augue venenatis porttitor eget vitae magna. Quisque nec magna
           tincidunt, fringilla augue vitae, condimentum quam.
         </p>
-        <TrendingFlatIcon className="goto-project" onClick={openProject} />
+        {props.showMore && <TrendingFlatIcon className="goto-project" onClick={openProject} />}
       </div>
     </div>
   );

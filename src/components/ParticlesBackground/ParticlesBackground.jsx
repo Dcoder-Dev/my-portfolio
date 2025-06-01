@@ -1,5 +1,5 @@
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { loadAll } from "@tsparticles/all";
 import particleConfig from "./particles.json";
 
@@ -17,7 +17,9 @@ const ParticlesBackground = (props) => {
     console.log(container);
   };
 
-  return <Particles id={props.id} init={particlesLoaded} options={particleConfig} />;
+  return (
+    <Particles id={props.id} init={particlesLoaded} options={particleConfig} />
+  );
 };
 
-export default ParticlesBackground;
+export default memo(ParticlesBackground);

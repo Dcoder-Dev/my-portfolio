@@ -2,11 +2,14 @@ import "./App.css";
 import MenuSlide from "./components/Menu/MenuSlide";
 import NextSection from "./components/NextSection/NextSection";
 import Intro from "./routes/HomePage/Intro";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Projects from "./routes/HomePage/Projects";
 import ParticlesBackground from "./components/ParticlesBackground/ParticlesBackground";
+import Experience from "./routes/HomePage/Experience";
+import Scrollbar from "./components/Scrollbar/Scrollbar";
 
 function App() {
+  const [curSection, setCurSection] = useState(0);
   const containerRef = useRef();
   let isScrolling = false;
 
@@ -43,12 +46,15 @@ function App() {
 
       const currentIndex = Math.round(container.scrollTop / window.innerHeight);
       const direction = e.deltaY > 0 ? 1 : -1;
+      if(currentIndex == 2 && direction == 1)
+        return;
       const nextIndex = Math.min(
         Math.max(currentIndex + direction, 0),
         container.children.length - 1
       );
 
       scrollToSection(nextIndex);
+      setCurSection(nextIndex);
     };
 
     container.addEventListener("wheel", onWheel, { passive: false });
@@ -57,12 +63,13 @@ function App() {
 
   return (
     <>
+      <Scrollbar section={curSection} />
       <ParticlesBackground />
       <div ref={containerRef} className="scroll-container">
         <MenuSlide />
         <Intro id="intro-sec" />
-        <Projects id="projects-sec" />
-        <Intro id="intro1-sec" />
+        <Projects />
+        <Experience />
       </div>
     </>
   );
